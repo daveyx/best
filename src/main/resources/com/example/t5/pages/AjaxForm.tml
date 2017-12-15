@@ -1,0 +1,33 @@
+<html t:type="layout" title=""
+	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+	<div class="row">
+		<div class="col-xs-12 text-center">
+			<h1>
+				Ajax Form
+			</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-6 col-xs-offset-3 text-center">
+			<t:zone t:id="formZone" id="formZone">
+				<t:form t:id="ajaxForm" class="form-horizontal" async="true">
+					<t:errors globalOnly="true"/>
+					<div class="form-group">
+						<t:label for="data" class="" />
+						<div class="" style="padding-left: 10px; display: inline-block;">
+							<t:textfield t:id="data" />
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="">
+							<t:submit value="Apply TestData" />
+						</div>
+					</div>
+
+					<p>TestData.uuid=${testdata.uuid}</p>
+					<p>TestData.value=${testdata.value}</p>
+				</t:form>
+			</t:zone>
+		</div>
+	</div>
+</html>

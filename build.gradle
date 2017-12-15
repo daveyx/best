@@ -1,0 +1,39 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.9.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+
+	compile('org.springframework.data:spring-data-elasticsearch:2.1.9.RELEASE')
+	compile('org.springframework.boot:spring-boot-starter-data-jpa:1.5.9.RELEASE')
+    compile('org.springframework.boot:spring-boot-starter-web')
+	testCompile('org.springframework.boot:spring-boot-starter-test:1.5.9.RELEASE')
+
+    compile('org.apache.tapestry:tapestry-core:5.4.3')
+    compile('org.tynamo:tapestry-security:0.7.0')
+    compile('org.apache.commons:commons-lang3:3.6')
+	runtime('mysql:mysql-connector-java:5.1.44')
+	compileOnly('org.projectlombok:lombok')
+}
+

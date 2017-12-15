@@ -1,0 +1,18 @@
+<html t:type="layout" title="" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+	<div class="row">
+		<div class="col-xs-12 text-center">
+			<h1>
+				Sping Boot + mongoDB + Tapestry5
+			</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 text-center">
+			<p>
+				<t:pagelink page="PlaygroundT5">Playground Page</t:pagelink><br/><br/>
+				<t:pagelink page="AjaxForm">Ajax Form Page</t:pagelink><br/><br/>
+				<t:pagelink page="BombServer">Bomb Server Page</t:pagelink><br/><br/>
+			</p>
+		</div>
+	</div>
+</html>

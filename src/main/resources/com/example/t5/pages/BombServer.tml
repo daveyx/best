@@ -1,0 +1,48 @@
+<html t:type="layout" title=""
+	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+	<div class="row">
+		<div class="col-xs-12 text-center">
+			<h1>
+				Bomb the Server 1000 times
+			</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 text-center">
+			<p>
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 text-center">
+			<t:zone t:id="middlezone" class="">
+			</t:zone>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 text-center">
+			<p>
+				<p><t:eventlink event="ajax" zone="middlezone" class="btn btn-default">Bomb the Server with 2,3,4</t:eventlink></p>
+				<p><t:eventlink event="ajax2" zone="middlezone" class="btn btn-default">Bomb the Server with 5,6,7</t:eventlink></p>
+			</p>
+		</div>
+	</div>
+
+	<t:block t:id="block">
+		<p>Ajax was called...</p>
+		<form>
+			<textarea rows="10" cols="50" class="bombing-area">
+			
+			</textarea>
+		</form>
+	</t:block>
+
+	<t:block t:id="block2">
+		<p>Ajax2 was called...</p>
+		<form>
+			<textarea rows="10" cols="50" class="bombing-area">
+			
+			</textarea>
+		</form>
+	</t:block>
+</html>
