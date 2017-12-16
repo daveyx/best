@@ -9,8 +9,9 @@ import com.example.elasticsearch.model.TestData;
 
 public interface TestDataRepository extends ElasticsearchRepository<TestData, String> {
 
-	Page<TestData> findByAuthorsName(String name, Pageable pageable);
+	Page<TestData> findByUuId(String uuid, Pageable pageable);
 
-	@Query("{\"bool\": {\"must\": [{\"match\": {\"authors.name\": \"?0\"}}]}}")
-	Page<TestData> findByAuthorsNameUsingCustomQuery(String name, Pageable pageable);
+//	@Query("{\"bool\": {\"must\": [{\"match\": {\"authors.name\": \"?0\"}}]}}")
+	@Query("{\"bool\" : {\"must\" : {\"field\" : {\"uuid\" : \"?0\"}}}")
+	Page<TestData> findByUuIdUsingCustomQuery(String uuid, Pageable pageable);
 }

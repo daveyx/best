@@ -14,8 +14,8 @@ public class Startup {
 
 	private static final Log LOGGER = LogFactory.getLog(Startup.class);
 
-	@Autowired
-	private TestDataRepository testDataRepository;
+//	@Autowired
+//	private TestDataRepository testDataRepository;
 
 	@EventListener(ApplicationReadyEvent.class)
 	public void doSomethingAfterStartup() {
