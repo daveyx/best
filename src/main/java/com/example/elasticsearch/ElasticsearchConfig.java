@@ -37,7 +37,7 @@ public class ElasticsearchConfig {
 		PreBuiltTransportClient client2 = new PreBuiltTransportClient(settings);
 		client2.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("localhost"), 9300));
 //		Client client = new PreBuiltTransportClient(settings).addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("localhost"), 9300));
-	return client2;
+		return client2;
 	}
 
 //	@Bean
