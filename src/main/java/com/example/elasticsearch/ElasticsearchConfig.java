@@ -28,16 +28,16 @@ public class ElasticsearchConfig {
 
 	@Bean
 	public ElasticsearchTemplate elasticsearchTemplate() throws UnknownHostException {
-	return new ElasticsearchTemplate(client());
+		return new ElasticsearchTemplate(client());
 	}
 
 	@Bean
 	public Client client() throws UnknownHostException {
-		Settings settings =Settings.builder().put("cluster.name", "elasticsearch").build();
-		PreBuiltTransportClient client2 = new PreBuiltTransportClient(settings);
-		client2.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("localhost"), 9300));
-//		Client client = new PreBuiltTransportClient(settings).addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("localhost"), 9300));
-		return client2;
+		final Settings settings =Settings.builder().put("cluster.name", "elasticsearch").build();
+		final PreBuiltTransportClient client = new PreBuiltTransportClient(settings);
+		client.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("localhost"), 9300));
+		LOGGER.info("Elasticsearch client created");
+		return client;
 	}
 
 //	@Bean
