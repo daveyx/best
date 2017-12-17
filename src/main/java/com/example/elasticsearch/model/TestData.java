@@ -14,7 +14,4 @@ public class TestData extends AbstractEntity {
 	public static final String TEST_UUID = "1234-1234-1234-1234-1234";
      
     private String value;
-     
-//    @Field(type = FieldType.Nested)
-//    private List<String> authors;
 }
