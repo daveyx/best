@@ -26,9 +26,8 @@ public class PUserAccount extends PAbstractEntity {
 	@Column(name = "PASSWORD", unique = false, nullable = true)
 	private String password;
 
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "userAccount")
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_DATA_ID")
-	@MapsId
 	private PUserData userData;
 
 	public PUserAccount() {

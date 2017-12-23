@@ -20,7 +20,7 @@ public class PUserData extends PAbstractEntity {
     @Column(name = "LASTNAME", unique = false, nullable = true, length = 50)
 	private String lastName;
 
-	@OneToOne
+	@OneToOne(mappedBy = "userData")
 	private PUserAccount userAccount;
 
 	public PUserData() {
