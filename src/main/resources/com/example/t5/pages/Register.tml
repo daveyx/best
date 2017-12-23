@@ -1,11 +1,11 @@
 <html t:type="layout" title=""
 	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
 	<div class="col-md-5 col-md-offset-1">
-		<h2>Registrieren</h2>
+		<h2>${message:com.example.registration.header}</h2>
 		<t:Form t:id="registrationForm" t:secure="true">
 			<div class="row">
 				<div class="col-md-3">
-					<t:label for="registerEmail">E-Mail</t:label>
+					<t:label for="registerEmail">${message:com.example.registration.email}</t:label>
 				</div>
 				<div class="col-md-6">
 					<t:textfield t:id="registerEmail" t:value="registerEmail" />
@@ -13,7 +13,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-3">
-					<t:label for="registerPassword">Passwort</t:label>
+					<t:label for="registerPassword">${message:com.example.registration.password}</t:label>
 				</div>
 				<div class="col-md-6">
 					<t:passwordfield t:id="registerPassword" t:value="registerPassword" />
@@ -21,7 +21,7 @@
 			</div>
 			<div class="row">
 				<div class="col-xs-7 col-sm-4 col-md-5">
-					<t:label for="newsletter">Newsletter abonieren?</t:label>
+					<t:label for="newsletter">${message:com.example.registration.subcribenl}</t:label>
 				</div>
 				<div class="col-xs-5 col-sm-5 col-md-5">
 					<t:checkbox t:id="newsletter" t:value="registernewsletter" />
@@ -29,10 +29,9 @@
 			</div>
 			<div class="row row-eq-height registerArea">
 				<div class="col-xs-6 col-sm-5 col-md-5">
-					<input t:type="submit" value="Registrieren" />
+					<input t:type="submit" value="${message:com.example.registration.header}" />
 				</div>
 			</div>
 		</t:Form>
 	</div>
-
 </html>

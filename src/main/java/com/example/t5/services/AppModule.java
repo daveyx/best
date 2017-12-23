@@ -5,10 +5,13 @@ import org.apache.tapestry5.SymbolConstants;
 import org.apache.tapestry5.ioc.Configuration;
 import org.apache.tapestry5.ioc.MappedConfiguration;
 import org.apache.tapestry5.ioc.OrderedConfiguration;
+import org.apache.tapestry5.ioc.Resource;
 import org.apache.tapestry5.ioc.ServiceBinder;
 import org.apache.tapestry5.ioc.annotations.Contribute;
+import org.apache.tapestry5.ioc.annotations.Value;
 import org.apache.tapestry5.ioc.services.ApplicationDefaults;
 import org.apache.tapestry5.ioc.services.SymbolProvider;
+import org.apache.tapestry5.services.messages.ComponentMessagesSource;
 import org.tynamo.security.services.SecurityFilterChainFactory;
 import org.tynamo.security.services.impl.SecurityFilterChain;
 
@@ -97,5 +100,11 @@ public class AppModule {
 		configuration.add("ports_9000", factory.createChain("/ports/port9090").add(factory.port(), "9090").build());
 
 		configuration.add("hidden", factory.createChain("/hidden/**").add(factory.notfound()).build());
+	}
+
+	@Contribute(ComponentMessagesSource.class)
+	public static void provideMessages(final @Value("messages.properties") Resource resource,
+			final OrderedConfiguration<Resource> configuration) {
+		configuration.add(SymbolConstants.APPLICATION_CATALOG + ".BASE", resource);
 	}
 }
