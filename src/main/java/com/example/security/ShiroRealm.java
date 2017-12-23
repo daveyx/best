@@ -15,6 +15,10 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 import com.example.persistence.model.PUserAccount;
 import com.example.persistence.repo.PUserAccountRepository;
 
+/*
+ * based on 
+ * http://user.tynamo.codehaus.narkive.com/Jat72oCQ/tapestry-security-database-authentication
+ */
 public class ShiroRealm extends AuthorizingRealm {
 
 	@Inject
