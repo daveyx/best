@@ -20,18 +20,27 @@ public class AccountService implements IAccountService {
 	private PasswordService passwordService;
 
 	@Override
-	public void register(final String email, final String plainTextPassword, final boolean newsletterAccepted)
-	{
+	public void register(final String email, final String plainTextPassword, final boolean newsletterAccepted) {
 		final PUserAccount pAccount = new PUserAccount();
 		pAccount.setEmail(email);
 		pAccount.setDateCreation(new DateTime());
-//		if (newsletterAccepted) {
-//			pAccount.setNewsLetter("1");
-//		}
+		// if (newsletterAccepted) {
+		// pAccount.setNewsLetter("1");
+		// }
 
 		pAccount.setPassword(passwordService.encryptPassword(plainTextPassword));
 		pUserAccountRepository.save(pAccount);
-		
-		LOGGER.info("User registered with email=" + pAccount.getEmail() + " and hashedPassword=" + pAccount.getPassword());
+
+		LOGGER.info(
+				"User registered with email=" + pAccount.getEmail() + " and hashedPassword=" + pAccount.getPassword());
+	}
+
+	@Override
+	public boolean isEmailExisting(final String email) {
+		final PUserAccount pUserAccount = pUserAccountRepository.findByEmail(email);
+		if (pUserAccount == null) {
+			return false;
+		}
+		return true;
 	}
 }

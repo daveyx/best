@@ -8,6 +8,9 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-12 text-center">
+			<hr />
+			<t:pagelink page="Register">Registrieren</t:pagelink> | <t:pagelink page="security/Login">Login</t:pagelink><br/><br/>
+			<hr />
 			<p>
 				<t:pagelink page="PlaygroundT5">Playground Page</t:pagelink><br/><br/>
 				<t:pagelink page="AjaxForm">Ajax Form Page</t:pagelink><br/><br/>
