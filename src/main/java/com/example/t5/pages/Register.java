@@ -18,6 +18,7 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 import org.tynamo.security.services.SecurityService;
 
 import com.example.service.account.IAccountService;
+import com.example.service.email.TrashMailException;
 
 public class Register {
 
@@ -76,7 +77,14 @@ public class Register {
 	}
 
 	Object onSuccessFromRegistrationForm() {
-		accountService.register(registerEmail, registerPassword, registerNewsLetter);
+		try {
+			accountService.register(registerEmail, registerPassword, registerNewsLetter);
+		} catch (final TrashMailException e) {
+			e.printStackTrace();
+			registrationForm.recordError(registerEmailField, "Fehler - bitte eine andere E-Mail Adresse benutzen.");
+			alertManager.error("Diese E-Mail Adresse ist nicht erlaubt. Btte eine andere E-Mail Adresse benutzen.");
+			return null;
+		}
 		final String loginMessage = doLogin(registerEmail, registerPassword);
 		if (StringUtils.isNotBlank(loginMessage)) {
 			alertManager.error(loginMessage);

@@ -18,6 +18,7 @@ import com.example.persistence.model.PUserData;
 import com.example.persistence.repo.PUserAccountRepository;
 import com.example.service.BeanConfig;
 import com.example.service.account.IAccountService;
+import com.example.service.email.TrashMailException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @DataJpaTest
@@ -64,7 +65,11 @@ public class AccountTests {
 
 	@Test
 	public void accountService() {
-		accountService.register(TEST_EMAIL, "aPassword", true);
+		try {
+			accountService.register(TEST_EMAIL, "aPassword", true);
+		} catch (final TrashMailException tme) {
+			tme.printStackTrace();
+		}
 		final PUserAccount pUserAccount = pUserAccountRepository.findByEmail(TEST_EMAIL);
 		assertNotNull(pUserAccount);
 	}

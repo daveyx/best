@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.persistence.model.PUserAccount;
 import com.example.persistence.repo.PUserAccountRepository;
+import com.example.service.email.TrashMail;
+import com.example.service.email.TrashMailException;
 
 public class AccountService implements IAccountService {
 
@@ -20,7 +22,12 @@ public class AccountService implements IAccountService {
 	private PasswordService passwordService;
 
 	@Override
-	public void register(final String email, final String plainTextPassword, final boolean newsletterAccepted) {
+	public void register(final String email, final String plainTextPassword, final boolean newsletterAccepted) throws TrashMailException {
+		for (final String trashMail : TrashMail.TRASHMAILS) {
+			if (email.contains(trashMail)) {
+				throw new TrashMailException("Trashmail " + trashMail + " detected, aborting");
+			}
+		}
 		final PUserAccount pAccount = new PUserAccount();
 		pAccount.setEmail(email);
 		pAccount.setDateCreation(new DateTime());
