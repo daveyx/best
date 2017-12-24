@@ -9,5 +9,5 @@ import com.example.persistence.model.PArticleGroup;
 
 public interface PArticleRepository extends JpaRepository<PArticle, Long> {
 
-	List<PArticle> findByPArticleGroup(final PArticleGroup pArticleGroup);
+	List<PArticle> findByArticleGroup(final PArticleGroup articleGroup);
 }

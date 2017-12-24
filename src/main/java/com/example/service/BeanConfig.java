@@ -44,4 +44,9 @@ public class BeanConfig {
 	public IAccountService accountService() {
 		return new AccountService();
 	}
+
+	@Bean
+	public IArticleAccessService articleAccessService() {
+		return new ArticleAccessService();
+	}
 }

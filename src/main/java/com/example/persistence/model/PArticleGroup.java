@@ -35,6 +35,6 @@ public class PArticleGroup extends PAbstractEntity {
 	@Cascade(value = { org.hibernate.annotations.CascadeType.ALL })
 	private List<PArticle> _addresses = new ArrayList<PArticle>();
 
-    @Column(name = "NAME", unique = false, nullable = true, length = 50)
+    @Column(name = "NAME", unique = true, nullable = true, length = 50)
 	private String name;
 }

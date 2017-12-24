@@ -6,4 +6,5 @@ import com.example.persistence.model.PArticleGroup;
 
 public interface PArticleGroupRepository extends JpaRepository<PArticleGroup, Long> {
 
+	PArticleGroup findByName(final String name);
 }
