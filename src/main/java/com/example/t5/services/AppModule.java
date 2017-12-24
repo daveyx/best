@@ -11,6 +11,7 @@ import org.apache.tapestry5.ioc.annotations.Contribute;
 import org.apache.tapestry5.ioc.annotations.Value;
 import org.apache.tapestry5.ioc.services.ApplicationDefaults;
 import org.apache.tapestry5.ioc.services.SymbolProvider;
+import org.apache.tapestry5.services.LibraryMapping;
 import org.apache.tapestry5.services.messages.ComponentMessagesSource;
 import org.tynamo.security.services.SecurityFilterChainFactory;
 import org.tynamo.security.services.impl.SecurityFilterChain;
@@ -106,5 +107,12 @@ public class AppModule {
 	public static void provideMessages(final @Value("messages.properties") Resource resource,
 			final OrderedConfiguration<Resource> configuration) {
 		configuration.add(SymbolConstants.APPLICATION_CATALOG + ".BASE", resource);
+	}
+
+
+	
+	public static void contributeComponentClassResolver(final Configuration<LibraryMapping> configuration)
+	{
+		configuration.add(new LibraryMapping("admin", "com.example.t5.admin"));
 	}
 }

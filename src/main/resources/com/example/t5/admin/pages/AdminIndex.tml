@@ -1,0 +1,26 @@
+<div xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+	xmlns:p="tapestry:parameter" t:id="template">
+
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+			<h1>Admin Backend</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<t:security.hasRole role="admin">
+					You own the role "Admin"
+				<p:else>
+					You don't own the role "Admin"
+				</p:else>
+				</t:security.hasRole>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<h2>Stuff</h2>
+			</div>
+		</div>
+	</div>
+</div>
