@@ -29,7 +29,7 @@ public class PArticle extends PAbstractEntity {
 	@JoinColumn(name = "FK_ARTICLEGROUP_ID", nullable = false)
 	private PArticleGroup articleGroup = null;
 
-    @Column(name = "HEADING", unique = false, nullable = true, length = 50)
+    @Column(name = "HEADING", unique = true, nullable = true, length = 50)
 	private String heading;
 
     @Column(name = "INTRO", unique = false, nullable = true, length = 2048)

@@ -2,6 +2,7 @@ package com.example.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.example.persistence.model.PArticle;
 import com.example.persistence.model.PArticleGroup;
 import com.example.persistence.repo.PArticleGroupRepository;
 import com.example.persistence.repo.PArticleRepository;
@@ -27,5 +28,21 @@ public class ArticleAccessService implements IArticleAccessService{
 		final PArticleGroup pArticleGroup = new PArticleGroup();
 		pArticleGroup.setName(name);
 		pArticleGroupRepository.save(pArticleGroup);
+	}
+
+	@Override
+	public PArticle getArticleByHeading(final String heading) {
+		return pArticleRepository.findByHeading(heading);
+	}
+
+	@Override
+	public void createArticle(final PArticleGroup pArticleGroup, final String heading) {
+		if (pArticleRepository.findByHeading(heading) != null) {
+			throw new IllegalStateException("Article " + heading + " already exists");
+		}
+		final PArticle pArticle = new PArticle();
+		pArticle.setHeading(heading);
+		pArticle.setArticleGroup(pArticleGroup);
+		pArticleRepository.save(pArticle);
 	}
 }
