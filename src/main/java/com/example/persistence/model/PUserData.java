@@ -2,7 +2,11 @@ package com.example.persistence.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -13,6 +17,12 @@ import lombok.EqualsAndHashCode;
 @Entity
 @Table(name = "USER_DATA")
 public class PUserData extends PAbstractEntity {
+
+	@Id
+    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "userdata_seq_gen")
+    @SequenceGenerator(name = "userdata_seq_gen", sequenceName = "USERDATA_SEQ")
+	private Long id;
 
     @Column(name = "FIRSTNAME", unique = false, nullable = true, length = 50)
 	private String firstName;
