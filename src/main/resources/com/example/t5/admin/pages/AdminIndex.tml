@@ -21,6 +21,12 @@
 			<div class="col-xs-12">
 				<h2>Stuff</h2>
 			</div>
+			<div class="col-xs-12">
+			<p>
+				<t:pagelink page="Admin/ArticleGroups">AdminArticleGroups</t:pagelink><br/>
+				<t:pagelink page="Admin/Articles">AdminArticles</t:pagelink><br/>
+			</p>
+			</div>
 		</div>
 	</div>
 </div>
