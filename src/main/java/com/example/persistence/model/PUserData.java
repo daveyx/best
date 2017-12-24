@@ -20,8 +20,8 @@ public class PUserData extends PAbstractEntity {
 
 	@Id
     @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "userdata_seq_gen")
-    @SequenceGenerator(name = "userdata_seq_gen", sequenceName = "USERDATA_SEQ")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "user_data_seq_gen")
+    @SequenceGenerator(name = "user_data_seq_gen", sequenceName = "USER_DATA_SEQ")
 	private Long id;
 
     @Column(name = "FIRSTNAME", unique = false, nullable = true, length = 50)

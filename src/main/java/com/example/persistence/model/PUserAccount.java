@@ -1,7 +1,5 @@
 package com.example.persistence.model;
 
-import java.util.Date;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,8 +13,6 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import org.joda.time.DateTime;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -28,8 +24,8 @@ public class PUserAccount extends PAbstractEntity {
 
 	@Id
     @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "useraccount_seq_gen")
-    @SequenceGenerator(name = "useraccount_seq_gen", sequenceName = "USERACCOUNT_SEQ")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "user_account_seq_gen")
+    @SequenceGenerator(name = "user_account_seq_gen", sequenceName = "USER_ACCOUNT_SEQ")
 	private Long id;
 	
 	@Column(name = "EMAIL", unique = true, nullable = false, length = 50)
@@ -43,20 +39,8 @@ public class PUserAccount extends PAbstractEntity {
 	@JoinColumn(name = "USER_DATA_ID")
 	private PUserData userData;
 
-	@Column(name = "DATE_CREATION", nullable = false)
-	@NotNull
-	private Date dateCreation = new Date();
-
 	public PUserAccount() {
 		super();
-	}
-
-	public DateTime getDateCreation() {
-		return (null == dateCreation) ? null : new DateTime(dateCreation.getTime());
-	}
-
-	public void setDateCreation(final DateTime dateCreation) {
-		this.dateCreation = (null == dateCreation) ? null : new Date(dateCreation.getMillis());
 	}
 
 	@Override
