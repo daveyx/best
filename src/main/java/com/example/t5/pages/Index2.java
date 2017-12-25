@@ -16,9 +16,6 @@ public class Index2 {
 
 	// -----------> components
 
-	// @Component(id = "article", parameters = {})
-	// private ArticleView article;
-
 	// -----------> properties
 
 	@Property
