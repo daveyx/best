@@ -1,6 +1,7 @@
 package com.example.t5.admin.pages;
 
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.apache.tapestry5.alerts.AlertManager;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.InjectComponent;
 import org.apache.tapestry5.annotations.Property;
@@ -18,6 +19,9 @@ public class AdminArticle {
 
 	@Inject
 	private IArticleAccessService articleAccessService;
+
+	@Inject
+	private AlertManager alertManager;
 
 	// -----------> components
 
@@ -61,5 +65,6 @@ public class AdminArticle {
 	void onSuccess() {
 		System.out.println("--> onSuccess");
 		articleAccessService.save(pArticle);
+		alertManager.success("Successfully saved the article with id=" + articleId);
 	}
 }
