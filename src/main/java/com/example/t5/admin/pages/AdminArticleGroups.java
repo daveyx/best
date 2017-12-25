@@ -10,7 +10,7 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.javascript.JavaScriptSupport;
 
 import com.example.persistence.model.PArticleGroup;
-import com.example.service.IArticleAccessService;
+import com.example.service.IPArticleAccessService;
 import com.example.t5.admin.components.AdminLayout;
 
 @RequiresAuthentication
@@ -19,7 +19,7 @@ public class AdminArticleGroups {
 	// -----------> services
 
 	@Inject
-	private IArticleAccessService articleAccessService;
+	private IPArticleAccessService articleAccessService;
 
 	@Inject
 	private JavaScriptSupport javaScriptSupport;

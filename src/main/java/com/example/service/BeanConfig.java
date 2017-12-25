@@ -46,8 +46,8 @@ public class BeanConfig {
 	}
 
 	@Bean
-	public IArticleAccessService articleAccessService() {
-		return new ArticleAccessService();
+	public IPArticleAccessService articleAccessService() {
+		return new PArticleAccessService();
 	}
 
 	@Bean

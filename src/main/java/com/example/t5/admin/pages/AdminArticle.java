@@ -9,7 +9,7 @@ import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
 import com.example.persistence.model.PArticle;
-import com.example.service.IArticleAccessService;
+import com.example.service.IPArticleAccessService;
 import com.example.t5.admin.components.AdminLayout;
 
 @RequiresAuthentication
@@ -18,7 +18,7 @@ public class AdminArticle {
 	// -----------> services
 
 	@Inject
-	private IArticleAccessService articleAccessService;
+	private IPArticleAccessService articleAccessService;
 
 	@Inject
 	private AlertManager alertManager;

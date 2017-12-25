@@ -5,7 +5,7 @@ import java.util.List;
 import com.example.persistence.model.PArticle;
 import com.example.persistence.model.PArticleGroup;
 
-public interface IArticleAccessService {
+public interface IPArticleAccessService {
 
 	PArticleGroup getArticleGroupByName(final String name);
 

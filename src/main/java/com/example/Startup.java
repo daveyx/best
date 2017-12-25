@@ -19,7 +19,7 @@ import com.example.persistence.model.PUserData;
 import com.example.persistence.repo.PArticleGroupRepository;
 import com.example.persistence.repo.PArticleRepository;
 import com.example.persistence.repo.PUserAccountRepository;
-import com.example.service.IArticleAccessService;
+import com.example.service.IPArticleAccessService;
 
 @Component
 public class Startup {
@@ -30,7 +30,7 @@ public class Startup {
 	private TestDataRepository testDataRepository;
 
 	@Autowired
-	private IArticleAccessService articleAccessService;
+	private IPArticleAccessService articleAccessService;
 
 	@Autowired
 	private PArticleGroupRepository pArticleGroupRepository;

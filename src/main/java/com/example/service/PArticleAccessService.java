@@ -9,7 +9,7 @@ import com.example.persistence.model.PArticleGroup;
 import com.example.persistence.repo.PArticleGroupRepository;
 import com.example.persistence.repo.PArticleRepository;
 
-public class ArticleAccessService implements IArticleAccessService {
+public class PArticleAccessService implements IPArticleAccessService {
 
 	@Autowired
 	private PArticleRepository pArticleRepository;

@@ -14,7 +14,7 @@ import com.example.DemoApplication;
 import com.example.persistence.model.PArticle;
 import com.example.persistence.model.PArticleGroup;
 import com.example.service.BeanConfig;
-import com.example.service.IArticleAccessService;
+import com.example.service.IPArticleAccessService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @DataJpaTest
@@ -22,7 +22,7 @@ import com.example.service.IArticleAccessService;
 public class ArticleTests {
 
 	@Autowired
-	private IArticleAccessService articleAccessService;
+	private IPArticleAccessService articleAccessService;
 
 	@Ignore
 	@Test

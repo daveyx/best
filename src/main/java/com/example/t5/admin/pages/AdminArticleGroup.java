@@ -13,7 +13,7 @@ import org.apache.tapestry5.services.BeanModelSource;
 import com.example.persistence.model.PArticle;
 import com.example.persistence.model.PArticleGroup;
 import com.example.persistence.repo.PArticleRepository;
-import com.example.service.IArticleAccessService;
+import com.example.service.IPArticleAccessService;
 import com.example.t5.admin.components.AdminLayout;
 import com.example.t5.services.ArticlePagedDataSource;
 
@@ -23,7 +23,7 @@ public class AdminArticleGroup {
 	// -----------> services
 
 	@Inject
-	private IArticleAccessService articleAccessService;
+	private IPArticleAccessService articleAccessService;
 
 	@Inject
 	private PArticleRepository pArticleRepository;
