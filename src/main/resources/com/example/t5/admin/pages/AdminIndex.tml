@@ -1,31 +1,63 @@
 <div xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
 	xmlns:p="tapestry:parameter" t:id="template">
 
-	<div class="container">
+	<div class="container text-center">
 		<div class="row">
 			<div class="col-xs-12">
-			<h1>Admin Backend</h1>
+				<h1>Admin Backend</h1>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-xs-12">
-				<t:security.hasRole role="admin">
-					You own the role "Admin"
-				<p:else>
-					You don't own the role "Admin"
-				</p:else>
-				</t:security.hasRole>
+				<p>
+					<t:security.hasRole role="admin">
+						You own the role "Admin"
+						<p:else>
+							You don't own the role "Admin"
+						</p:else>
+					</t:security.hasRole>
+				</p>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-xs-12">
-				<h2>Stuff</h2>
+				<h2>What you want to do?</h2>
 			</div>
 			<div class="col-xs-12">
-			<p>
-				<t:pagelink page="Admin/ArticleGroups">AdminArticleGroups</t:pagelink><br/>
-				<t:pagelink page="Admin/Articles">AdminArticles</t:pagelink><br/>
-			</p>
+				<p>
+					<t:pagelink class="btn btn-primary btn-lg" page="Admin/ArticleGroups">Manage
+						Data
+					</t:pagelink>
+					<br />
+				</p>
+			</div>
+			<div class="col-xs-12">
+				<p>
+					<button type="button" class="btn btn-primary btn-lg"
+						data-toggle="modal" data-target="#notImplementedModal">
+						Manage Users</button>
+					<div id="notImplementedModal" class="modal fade" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;
+									</button>
+									<h4 class="modal-title">Info</h4>
+								</div>
+								<div class="modal-body">
+									<p>Not implemented yet.</p>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default"
+										data-dismiss="modal">Close</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<br />
+					<t:pagelink page="Admin/Articles">AdminArticles</t:pagelink>
+					<br />
+				</p>
 			</div>
 		</div>
 	</div>
