@@ -12,6 +12,7 @@ import com.example.elasticsearch.model.Article;
 import com.example.elasticsearch.repo.ArticleRepository;
 import com.example.persistence.model.PArticle;
 import com.example.persistence.repo.PArticleRepository;
+import com.example.util.Tuple2;
 
 public class AdminElasticsearchService implements IAdminElasticsearchService {
 
@@ -33,12 +34,13 @@ public class AdminElasticsearchService implements IAdminElasticsearchService {
 	}
 
 	@Override
-	public int reindexArticles() {
+	public Tuple2<Integer, Integer> reindexArticles() {
 		LOGGER.info("reindexArticles...");
 		deleteAndCreateNew();
 		int pageIndex = 0;
 		int itemCount = 0;
 		int totalArticleCount = 0;
+		int cachedArticleCount = 0;
 		do {
 			LOGGER.info("pageIndex=" + pageIndex);
 			final Pageable page = PageRequest.of(pageIndex, ARTICLE_PAGE_COUNT);
@@ -46,6 +48,7 @@ public class AdminElasticsearchService implements IAdminElasticsearchService {
 			for (final PArticle pArticle : articles) {
 				if (pArticle.isPublished()) {
 					articleRepository.save(convert(pArticle));
+					cachedArticleCount++;
 				}
 			}
 			itemCount = articles.getContent().size();
@@ -54,7 +57,7 @@ public class AdminElasticsearchService implements IAdminElasticsearchService {
 			pageIndex++;
 		} while (itemCount == ARTICLE_PAGE_COUNT);
 		LOGGER.info("reindexArticles finished");
-		return totalArticleCount;
+		return new Tuple2<Integer, Integer>(totalArticleCount, cachedArticleCount);
 	}
 
 	//

@@ -13,6 +13,7 @@ import org.apache.tapestry5.services.ajax.AjaxResponseRenderer;
 import com.example.elasticsearch.model.Article;
 import com.example.service.IAdminElasticsearchService;
 import com.example.t5.admin.components.AdminLayout;
+import com.example.util.Tuple2;
 
 @RequiresAuthentication
 public class AdminElasticsearch {
@@ -47,8 +48,8 @@ public class AdminElasticsearch {
 	// -----------> events
 
 	void onReindex() {
-		final int articleCount = adminElasticsearchService.reindexArticles();
-		alertManager.success("Reindex Elasticsearch finished; articlecount=" + articleCount);
+		final Tuple2<Integer, Integer> articleCount = adminElasticsearchService.reindexArticles();
+		alertManager.success("Reindex Elasticsearch finished; articlecount=" + articleCount.getA() + "; cached-articlecount=" + articleCount.getB());
 	}
 
 	void onListarticles() {
