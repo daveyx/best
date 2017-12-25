@@ -1,5 +1,7 @@
 package com.example.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.persistence.model.PArticle;
@@ -44,5 +46,10 @@ public class ArticleAccessService implements IArticleAccessService{
 		pArticle.setHeading(heading);
 		pArticle.setArticleGroup(pArticleGroup);
 		pArticleRepository.save(pArticle);
+	}
+
+	@Override
+	public List<PArticleGroup> getAllArticleGroups() {
+		return pArticleGroupRepository.findAll();
 	}
 }

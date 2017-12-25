@@ -27,7 +27,7 @@ public class PArticle extends PAbstractEntity {
 
 	@ManyToOne
 	@JoinColumn(name = "FK_ARTICLEGROUP_ID", nullable = false)
-	private PArticleGroup articleGroup = null;
+	private PArticleGroup articleGroup;
 
     @Column(name = "HEADING", unique = true, nullable = true, length = 50)
 	private String heading;

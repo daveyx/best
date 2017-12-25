@@ -33,7 +33,7 @@ public class PArticleGroup extends PAbstractEntity {
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "articleGroup", orphanRemoval = true)
 	@Cascade(value = { org.hibernate.annotations.CascadeType.ALL })
-	private List<PArticle> _addresses = new ArrayList<PArticle>();
+	private List<PArticle> articles = new ArrayList<PArticle>();
 
     @Column(name = "NAME", unique = true, nullable = true, length = 50)
 	private String name;

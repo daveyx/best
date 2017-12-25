@@ -1,5 +1,7 @@
 package com.example.service;
 
+import java.util.List;
+
 import com.example.persistence.model.PArticle;
 import com.example.persistence.model.PArticleGroup;
 
@@ -12,5 +14,7 @@ public interface IArticleAccessService {
 	PArticle getArticleByHeading(final String heading);
 
 	void createArticle(final PArticleGroup pArticleGroup, final String heading);
+
+	List<PArticleGroup> getAllArticleGroups();
 
 }

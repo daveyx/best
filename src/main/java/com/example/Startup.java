@@ -12,8 +12,12 @@ import org.springframework.stereotype.Component;
 
 import com.example.elasticsearch.model.TestData;
 import com.example.elasticsearch.repo.TestDataRepository;
+import com.example.persistence.model.PArticle;
+import com.example.persistence.model.PArticleGroup;
 import com.example.persistence.model.PUserAccount;
 import com.example.persistence.model.PUserData;
+import com.example.persistence.repo.PArticleGroupRepository;
+import com.example.persistence.repo.PArticleRepository;
 import com.example.persistence.repo.PUserAccountRepository;
 
 @Component
@@ -25,6 +29,12 @@ public class Startup {
 	private TestDataRepository testDataRepository;
 
 	@Autowired
+	private PArticleGroupRepository pArticleGroupRepository;
+
+	@Autowired
+	private PArticleRepository pArticleRepository;
+
+	@Autowired
 	private PUserAccountRepository pUserAccountRepository;
 
 	@Autowired
@@ -33,6 +43,7 @@ public class Startup {
 	@EventListener(ApplicationReadyEvent.class)
 	public void doSomethingAfterStartup() {
 		initTestData();
+		initTestArticleData();
 		createAccount();
 		LOGGER.info("-------------> startup finished");
 	}
@@ -78,5 +89,33 @@ public class Startup {
 		testData.setValue("1");
 		final TestData testDataSaved = testDataRepository.save(testData);
 		LOGGER.info("testdata.uuid=" + testDataSaved.getId());
+	}
+	
+	private void initTestArticleData() {
+		PArticleGroup pArticleGroup = new PArticleGroup();
+		pArticleGroup.setName("ArticleGroup1");
+		PArticleGroup pArticleGroup2 = new PArticleGroup();
+		pArticleGroup2.setName("ArticleGroup2");
+		pArticleGroup = pArticleGroupRepository.save(pArticleGroup);
+		pArticleGroup2 = pArticleGroupRepository.save(pArticleGroup2);
+		
+		final PArticle pArticle1 = new PArticle();
+		pArticle1.setHeading("pArticle1 in group1");
+		pArticle1.setArticleGroup(pArticleGroup);
+		final PArticle pArticle2 = new PArticle();
+		pArticle2.setHeading("pArticle2 in group1");
+		pArticle2.setArticleGroup(pArticleGroup);
+		
+		final PArticle pArticle3 = new PArticle();
+		pArticle3.setHeading("pArticle1 in group2");
+		pArticle3.setArticleGroup(pArticleGroup2);
+		final PArticle pArticle4 = new PArticle();
+		pArticle4.setHeading("pArticle2 in group2");
+		pArticle4.setArticleGroup(pArticleGroup2);
+		
+		pArticleRepository.save(pArticle1);
+		pArticleRepository.save(pArticle2);
+		pArticleRepository.save(pArticle3);
+		pArticleRepository.save(pArticle4);
 	}
 }

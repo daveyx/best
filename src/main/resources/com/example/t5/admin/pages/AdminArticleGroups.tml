@@ -9,7 +9,8 @@
 		</div>
 		<div class="row">
 			<div class="col-xs-12">
-				<h2>Article Groups:</h2>
+				<h2>Article Groups</h2>
+				there are ${articlegroups.size()} article groups
 			</div>
 		</div>
 		<div class="row">
