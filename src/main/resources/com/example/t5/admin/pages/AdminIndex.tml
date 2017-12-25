@@ -57,6 +57,13 @@
 					<br />
 				</p>
 			</div>
+			<div class="col-xs-12">
+				<hr />
+				<h2><strong>Danger Zone</strong></h2>
+					<t:pagelink class="btn btn-primary btn-lg" page="Admin/Elasticsearch">
+						Elasticsearch
+					</t:pagelink>
+			</div>
 		</div>
 	</div>
 </div>

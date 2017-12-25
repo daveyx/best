@@ -15,12 +15,14 @@ public interface IArticleAccessService {
 
 	void createArticle(final PArticleGroup pArticleGroup, final String heading);
 
+	void createArticle(final PArticleGroup pArticleGroup, final String heading, final String image);
+
 	List<PArticleGroup> getAllArticleGroups();
 
 	PArticleGroup getArticleGroupById(final long articleGroupId);
 
 	PArticle getArticleById(final long articleId);
 
-	void save(final PArticle pArticle);
+	PArticle save(final PArticle pArticle);
 
 }

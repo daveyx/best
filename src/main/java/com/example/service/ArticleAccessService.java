@@ -39,13 +39,14 @@ public class ArticleAccessService implements IArticleAccessService{
 
 	@Override
 	public void createArticle(final PArticleGroup pArticleGroup, final String heading) {
-		if (pArticleRepository.findByHeading(heading) != null) {
-			throw new IllegalStateException("Article " + heading + " already exists");
-		}
-		final PArticle pArticle = new PArticle();
-		pArticle.setHeading(heading);
-		pArticle.setArticleGroup(pArticleGroup);
-		pArticleRepository.save(pArticle);
+		createArticle(true, pArticleGroup, heading);
+	}
+
+	@Override
+	public void createArticle(final PArticleGroup pArticleGroup, final String heading, final String image) {
+		final PArticle pArticle = createArticle(false, pArticleGroup, heading);
+		pArticle.setImage(image);
+		save(pArticle);
 	}
 
 	@Override
@@ -64,7 +65,24 @@ public class ArticleAccessService implements IArticleAccessService{
 	}
 
 	@Override
-	public void save(final PArticle pArticle) {
-		pArticleRepository.save(pArticle);
+	public PArticle save(final PArticle pArticle) {
+		return pArticleRepository.save(pArticle);
+	}
+
+	//
+	// ---> private
+	//
+
+	private PArticle createArticle(final boolean save, final PArticleGroup pArticleGroup, final String heading) {
+		if (pArticleRepository.findByHeading(heading) != null) {
+			throw new IllegalStateException("Article " + heading + " already exists");
+		}
+		final PArticle pArticle = new PArticle();
+		pArticle.setHeading(heading);
+		pArticle.setArticleGroup(pArticleGroup);
+		if (save) {
+			return save(pArticle);
+		}
+		return pArticle;
 	}
 }

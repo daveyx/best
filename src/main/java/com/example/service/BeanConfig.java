@@ -49,4 +49,9 @@ public class BeanConfig {
 	public IArticleAccessService articleAccessService() {
 		return new ArticleAccessService();
 	}
+
+	@Bean
+	public IAdminElasticsearchService adminElasticsearchService() {
+		return new AdminElasticsearchService();
+	}
 }

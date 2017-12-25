@@ -101,7 +101,14 @@ public class Startup {
 		pArticleGroup = pArticleGroupRepository.save(pArticleGroup);
 		
 		for (int i = 0; i < 50; i++) {
-			articleAccessService.createArticle(pArticleGroup, "pArticle" + i + " in group1");
+			articleAccessService.createArticle(pArticleGroup, "pArticle" + i + " in group1", "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Skull_and_crossbones.svg/250px-Skull_and_crossbones.svg.png");
+			if (i % 3 == 0) {
+				final PArticle pArticle = pArticleRepository.findByHeading("pArticle" + i + " in group1");
+				if (pArticle != null) {
+					pArticle.setPublished(true);
+					pArticleRepository.save(pArticle);
+				}
+			}
 		}
 
 		PArticleGroup pArticleGroup2 = new PArticleGroup();
