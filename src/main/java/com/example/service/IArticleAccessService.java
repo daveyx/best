@@ -21,4 +21,6 @@ public interface IArticleAccessService {
 
 	PArticle getArticleById(final long articleId);
 
+	void save(final PArticle pArticle);
+
 }

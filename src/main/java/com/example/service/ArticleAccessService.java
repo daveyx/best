@@ -62,4 +62,9 @@ public class ArticleAccessService implements IArticleAccessService{
 	public PArticle getArticleById(final long articleId) {
 		return pArticleRepository.findById(articleId).get();
 	}
+
+	@Override
+	public void save(final PArticle pArticle) {
+		pArticleRepository.save(pArticle);
+	}
 }

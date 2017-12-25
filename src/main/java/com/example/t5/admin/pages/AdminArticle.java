@@ -50,7 +50,7 @@ public class AdminArticle {
 	}
 
 	void onPrepareForSubmit() {
-		System.out.println("--> onPrepareForSubmit");
+		pArticle = articleAccessService.getArticleById(articleId);
 	}
 
 	void onValidateFromArticleForm() {
@@ -60,6 +60,6 @@ public class AdminArticle {
 	
 	void onSuccess() {
 		System.out.println("--> onSuccess");
-		
+		articleAccessService.save(pArticle);
 	}
 }

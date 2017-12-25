@@ -22,6 +22,13 @@ public abstract class PAbstractEntity {
 	@NotNull
 	private Date dateCreation = new Date();
 
+	@Column(name = "CREATED_BY", nullable = true)
+	private Long createdBy = null;
+
+	@Column(name = "UPDATE_CACHE", nullable = false)
+	@NotNull
+	private boolean updateCache = true;
+
 	public PAbstractEntity() {
 		uuid = UUID.randomUUID().toString();
 	}
