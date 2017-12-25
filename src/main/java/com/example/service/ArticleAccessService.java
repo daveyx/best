@@ -57,4 +57,9 @@ public class ArticleAccessService implements IArticleAccessService{
 	public PArticleGroup getArticleGroupById(long articleGroupId) {
 		return pArticleGroupRepository.findById(articleGroupId).get();
 	}
+
+	@Override
+	public PArticle getArticleById(final long articleId) {
+		return pArticleRepository.findById(articleId).get();
+	}
 }

@@ -1,15 +1,24 @@
 <div xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
 	xmlns:p="tapestry:parameter" t:id="template">
 
-	<div class="container">
+	<div class="container text-center">
 		<div class="row">
 			<div class="col-xs-12">
-			<h1>Admin Articles</h1>
+				<h1>Edit Article ${articleId}</h1>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-xs-12">
-				<h2>...</h2>
+				<t:form t:id="articleform">
+					<t:beaneditor t:id="article" object="pArticle">
+						<!-- If optimistic locking is not needed then comment out this next 
+							bit. It works because Hidden fields are part of the submit. -->
+					</t:beaneditor>
+
+					<div class="t-beaneditor-row">
+						<t:submit value="Save" />
+					</div>
+				</t:form>
 			</div>
 		</div>
 	</div>

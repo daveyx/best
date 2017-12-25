@@ -19,4 +19,6 @@ public interface IArticleAccessService {
 
 	PArticleGroup getArticleGroupById(final long articleGroupId);
 
+	PArticle getArticleById(final long articleId);
+
 }
