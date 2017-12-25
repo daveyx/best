@@ -13,7 +13,7 @@
 				<t:pagelink page="Register">Registrieren</t:pagelink> | <t:pagelink page="security/Login">Login</t:pagelink>
 			</p>
 			<p>
-				<t:pagelink page="Admin/Index">Admin</t:pagelink>
+				<t:pagelink page="Admin/Index">Admin</t:pagelink> | <t:pagelink page="Index2">Start page</t:pagelink>
 			</p>
 			<hr />
 			<p>
@@ -21,6 +21,11 @@
 				<t:pagelink page="AjaxForm">Ajax Form Page</t:pagelink><br/>
 				<t:pagelink page="BombServer">Bomb Server Page</t:pagelink><br/>
 			</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 text-center">
+			<hr />
 		</div>
 	</div>
 </html>

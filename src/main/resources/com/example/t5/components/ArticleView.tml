@@ -1,0 +1,12 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+	<t:content>
+		<div class="col-xs-12 col-lg-4">
+			<p>
+				<strong>
+					${article.heading}
+				</strong>
+				<img src="${article.image}" class="asdf"></img>
+			</p>
+		</div>
+	</t:content>
+</html>

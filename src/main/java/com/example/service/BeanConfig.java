@@ -54,4 +54,9 @@ public class BeanConfig {
 	public IAdminElasticsearchService adminElasticsearchService() {
 		return new AdminElasticsearchService();
 	}
+
+	@Bean
+	public IElasticsearchAccessService elasticsearchAccessService() {
+		return new ElasticsearchAccessService();
+	}
 }

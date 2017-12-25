@@ -1,0 +1,16 @@
+<html t:type="layout" title="" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+	<div class="row">
+		<div class="col-xs-12 text-center">
+			<h1>
+				Start Page
+			</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 text-center">
+			<div t:type="loop" t:source="articles" t:value="article">
+				<t:articleview article="article" />
+			</div>
+		</div>
+	</div>
+</html>
