@@ -9,7 +9,8 @@
 		</div>
 		<div class="row">
 			<div class="col-xs-12">
-				<h2>...</h2>
+				<h2>Articles of ${pArticleGroup.name}</h2>
+				<t:grid source="articles" rowsPerPage="10" pagerPosition="top"/>
 			</div>
 		</div>
 	</div>

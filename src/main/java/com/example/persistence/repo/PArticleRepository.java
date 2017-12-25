@@ -11,4 +11,5 @@ public interface PArticleRepository extends JpaRepository<PArticle, Long> {
 
 	List<PArticle> findByArticleGroup(final PArticleGroup articleGroup);
 	PArticle findByHeading(final String heading);
+	Long countByArticleGroup(final PArticleGroup articleGroup);
 }

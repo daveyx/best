@@ -38,4 +38,8 @@ public class PArticle extends PAbstractEntity {
     @Column(name = "IMAGE", unique = false, nullable = true, length = 512)
 	private String image;
 
+	@Override
+	public String toString() {
+		return String.format("PArticleGroup[id=%s, heading='%s']", id, heading);
+	}
 }

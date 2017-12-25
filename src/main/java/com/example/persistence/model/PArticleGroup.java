@@ -37,4 +37,9 @@ public class PArticleGroup extends PAbstractEntity {
 
     @Column(name = "NAME", unique = true, nullable = true, length = 50)
 	private String name;
+
+	@Override
+	public String toString() {
+		return String.format("PArticleGroup[id=%s, name='%s']", id, name);
+	}
 }
