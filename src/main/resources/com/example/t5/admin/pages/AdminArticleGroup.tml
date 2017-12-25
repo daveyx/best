@@ -10,7 +10,11 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<h2>Articles of ${pArticleGroup.name}</h2>
-				<t:grid source="articles" rowsPerPage="10" pagerPosition="top"/>
+				<t:grid source="articles" row="article" rowsPerPage="10" model="articlemodel" pagerPosition="top">
+					<p:actionCell>
+		                <t:pagelink page="Admin/Article" context="article">View</t:pagelink>
+		            </p:actionCell>
+				</t:grid>
 			</div>
 		</div>
 	</div>

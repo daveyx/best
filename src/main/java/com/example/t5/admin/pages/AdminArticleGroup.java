@@ -4,9 +4,13 @@ import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SetupRender;
+import org.apache.tapestry5.beaneditor.BeanModel;
 import org.apache.tapestry5.grid.GridDataSource;
+import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
+import org.apache.tapestry5.services.BeanModelSource;
 
+import com.example.persistence.model.PArticle;
 import com.example.persistence.model.PArticleGroup;
 import com.example.persistence.repo.PArticleRepository;
 import com.example.service.IArticleAccessService;
@@ -24,7 +28,13 @@ public class AdminArticleGroup {
 	@Inject
 	private PArticleRepository pArticleRepository;
 
-	// -----------> components
+    @Inject
+    private BeanModelSource beanModelSource;
+
+    @Inject
+    private Messages messages;
+
+    // -----------> components
 
 	@Component(id = "template", parameters = {})
 	private AdminLayout layoutComponent;
@@ -36,6 +46,12 @@ public class AdminArticleGroup {
 
 	@Property
     private GridDataSource articles;
+
+	@Property
+    private BeanModel<PArticle> articleModel;
+
+	@Property
+	private PArticle article;
 
 	// -----------> events
 
@@ -49,6 +65,13 @@ public class AdminArticleGroup {
 
 	@SetupRender
 	void setup() {
-		articles = new ArticlePagedDataSource(pArticleRepository, pArticleGroup);		
+		articles = new ArticlePagedDataSource(pArticleRepository, pArticleGroup);
+		articleModel = beanModelSource.createDisplayModel(PArticle.class, messages);
+		articleModel.add("action", null);
+		articleModel.include("id", "heading", "intro", "image", "action");
+		articleModel.get("id").sortable(false);
+		articleModel.get("heading").sortable(false);
+		articleModel.get("intro").sortable(false);
+		articleModel.get("image").sortable(false);
 	}
 }

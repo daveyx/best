@@ -6,7 +6,7 @@ import org.apache.tapestry5.annotations.Component;
 import com.example.t5.admin.components.AdminLayout;
 
 @RequiresAuthentication
-public class AdminArticles {
+public class AdminArticle {
 	
 	// -----------> services
 
