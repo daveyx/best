@@ -33,6 +33,9 @@ public class AdminArticleGroups {
 
 	@Property
 	private List<PArticleGroup> articleGroups;
+
+	@Property
+	private PArticleGroup looparticleGroup;
 	
 	// -----------> events
 

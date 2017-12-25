@@ -52,4 +52,9 @@ public class ArticleAccessService implements IArticleAccessService{
 	public List<PArticleGroup> getAllArticleGroups() {
 		return pArticleGroupRepository.findAll();
 	}
+
+	@Override
+	public PArticleGroup getArticleGroupById(long articleGroupId) {
+		return pArticleGroupRepository.findById(articleGroupId).get();
+	}
 }

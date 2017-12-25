@@ -19,6 +19,7 @@ import com.example.persistence.model.PUserData;
 import com.example.persistence.repo.PArticleGroupRepository;
 import com.example.persistence.repo.PArticleRepository;
 import com.example.persistence.repo.PUserAccountRepository;
+import com.example.service.IArticleAccessService;
 
 @Component
 public class Startup {
@@ -27,6 +28,9 @@ public class Startup {
 
 	@Autowired
 	private TestDataRepository testDataRepository;
+
+	@Autowired
+	private IArticleAccessService articleAccessService;
 
 	@Autowired
 	private PArticleGroupRepository pArticleGroupRepository;
@@ -94,27 +98,21 @@ public class Startup {
 	private void initTestArticleData() {
 		PArticleGroup pArticleGroup = new PArticleGroup();
 		pArticleGroup.setName("ArticleGroup1");
+		pArticleGroup = pArticleGroupRepository.save(pArticleGroup);
+		
+		for (int i = 0; i < 50; i++) {
+			articleAccessService.createArticle(pArticleGroup, "pArticle" + i + " in group1");
+		}
+
 		PArticleGroup pArticleGroup2 = new PArticleGroup();
 		pArticleGroup2.setName("ArticleGroup2");
-		pArticleGroup = pArticleGroupRepository.save(pArticleGroup);
 		pArticleGroup2 = pArticleGroupRepository.save(pArticleGroup2);
-		
-		final PArticle pArticle1 = new PArticle();
-		pArticle1.setHeading("pArticle1 in group1");
-		pArticle1.setArticleGroup(pArticleGroup);
-		final PArticle pArticle2 = new PArticle();
-		pArticle2.setHeading("pArticle2 in group1");
-		pArticle2.setArticleGroup(pArticleGroup);
-		
 		final PArticle pArticle3 = new PArticle();
 		pArticle3.setHeading("pArticle1 in group2");
 		pArticle3.setArticleGroup(pArticleGroup2);
 		final PArticle pArticle4 = new PArticle();
 		pArticle4.setHeading("pArticle2 in group2");
 		pArticle4.setArticleGroup(pArticleGroup2);
-		
-		pArticleRepository.save(pArticle1);
-		pArticleRepository.save(pArticle2);
 		pArticleRepository.save(pArticle3);
 		pArticleRepository.save(pArticle4);
 	}

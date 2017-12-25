@@ -17,4 +17,6 @@ public interface IArticleAccessService {
 
 	List<PArticleGroup> getAllArticleGroups();
 
+	PArticleGroup getArticleGroupById(final long articleGroupId);
+
 }
