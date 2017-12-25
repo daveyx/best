@@ -5,7 +5,7 @@ import org.apache.tapestry5.annotations.Property;
 
 import com.example.elasticsearch.model.Article;
 
-public class ArticleView {
+public class ArticleItemView {
 
 	// -----------> services
 

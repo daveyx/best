@@ -9,7 +9,7 @@
 	<div class="row">
 		<div class="col-xs-12 text-center">
 			<div t:type="loop" t:source="articles" t:value="article">
-				<t:articleview article="article" />
+				<t:articleitemview article="article" />
 			</div>
 		</div>
 	</div>
