@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 public class Article extends AbstractEntity {
 
 	private String articleGroup;
+	private String author;
 	private String heading;
 	private String intro;
 	private String image;

@@ -68,6 +68,7 @@ public class AdminElasticsearchService implements IAdminElasticsearchService {
 
 	private Article convert(final PArticle pArticle) {
 		final Article article = new Article();
+		article.setAuthor(pArticle.getAuthor());
 		article.setArticleGroup(pArticle.getArticleGroup().getName());
 		article.setHeading(pArticle.getHeading());
 		article.setIntro(pArticle.getIntro());

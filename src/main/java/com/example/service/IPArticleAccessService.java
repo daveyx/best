@@ -15,7 +15,7 @@ public interface IPArticleAccessService {
 
 	void createArticle(final PArticleGroup pArticleGroup, final String heading);
 
-	void createArticle(final PArticleGroup pArticleGroup, final String heading, final String image);
+	void createArticle(final PArticleGroup pArticleGroup, final String author, final String heading, final String image);
 
 	List<PArticleGroup> getAllArticleGroups();
 
@@ -24,5 +24,6 @@ public interface IPArticleAccessService {
 	PArticle getArticleById(final long articleId);
 
 	PArticle save(final PArticle pArticle);
+
 
 }

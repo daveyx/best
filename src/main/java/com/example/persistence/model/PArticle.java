@@ -32,6 +32,9 @@ public class PArticle extends PAbstractEntity {
 	@JoinColumn(name = "FK_ARTICLEGROUP_ID", nullable = false)
 	private PArticleGroup articleGroup;
 
+    @Column(name = "AUTHOR", unique = false, nullable = true, length = 50)
+	private String author;
+
     @Column(name = "HEADING", unique = true, nullable = true, length = 50)
 	private String heading;
 

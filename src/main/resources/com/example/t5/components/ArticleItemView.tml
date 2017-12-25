@@ -12,6 +12,11 @@
 				<div class="col-xs-12">
 					<img src="${article.image}" class="asdf"></img>
 				</div>
+				<div class="col-xs-12">
+					<p>
+						<span>${article.author}</span>
+					</p>
+				</div>
 			</div>
 		</div>
 	</t:content>

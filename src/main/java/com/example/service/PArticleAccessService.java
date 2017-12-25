@@ -39,12 +39,12 @@ public class PArticleAccessService implements IPArticleAccessService {
 
 	@Override
 	public void createArticle(final PArticleGroup pArticleGroup, final String heading) {
-		createArticle(true, pArticleGroup, heading);
+		createArticle(true, null, pArticleGroup, heading);
 	}
 
 	@Override
-	public void createArticle(final PArticleGroup pArticleGroup, final String heading, final String image) {
-		final PArticle pArticle = createArticle(false, pArticleGroup, heading);
+	public void createArticle(final PArticleGroup pArticleGroup, final String author, final String heading, final String image) {
+		final PArticle pArticle = createArticle(false, author, pArticleGroup, heading);
 		pArticle.setImage(image);
 		save(pArticle);
 	}
@@ -73,11 +73,12 @@ public class PArticleAccessService implements IPArticleAccessService {
 	// ---> private
 	//
 
-	private PArticle createArticle(final boolean save, final PArticleGroup pArticleGroup, final String heading) {
+	private PArticle createArticle(final boolean save, final String author, final PArticleGroup pArticleGroup, final String heading) {
 		if (pArticleRepository.findByHeading(heading) != null) {
 			throw new IllegalStateException("Article " + heading + " already exists");
 		}
 		final PArticle pArticle = new PArticle();
+		pArticle.setAuthor(author);
 		pArticle.setHeading(heading);
 		pArticle.setArticleGroup(pArticleGroup);
 		if (save) {

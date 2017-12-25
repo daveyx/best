@@ -75,7 +75,6 @@ public class Startup {
 	// ---> private
 	//
 
-
 	private void initTestData() {
 		final String uuid = TestData.TEST_UUID;
 		final Page<TestData> testDataPage = testDataRepository.findByUuId(TestData.TEST_UUID, Pageable.unpaged());
@@ -94,16 +93,17 @@ public class Startup {
 		final TestData testDataSaved = testDataRepository.save(testData);
 		LOGGER.info("testdata.uuid=" + testDataSaved.getId());
 	}
-	
+
 	private void initTestArticleData() {
 		PArticleGroup pArticleGroup = new PArticleGroup();
 		pArticleGroup.setName("ArticleGroup1");
 		pArticleGroup = pArticleGroupRepository.save(pArticleGroup);
-		
+
 		for (int i = 0; i < 50; i++) {
-			articleAccessService.createArticle(pArticleGroup, "pArticle" + i + " in group1", "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Skull_and_crossbones.svg/250px-Skull_and_crossbones.svg.png");
+			articleAccessService.createArticle(pArticleGroup, "Arthur Author1", "article" + i + " in group1",
+					"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Anonymous_emblem.svg/240px-Anonymous_emblem.svg.png");
 			if (i % 3 == 0) {
-				final PArticle pArticle = pArticleRepository.findByHeading("pArticle" + i + " in group1");
+				final PArticle pArticle = pArticleRepository.findByHeading("article" + i + " in group1");
 				if (pArticle != null) {
 					pArticle.setPublished(true);
 					pArticleRepository.save(pArticle);
@@ -114,13 +114,21 @@ public class Startup {
 		PArticleGroup pArticleGroup2 = new PArticleGroup();
 		pArticleGroup2.setName("ArticleGroup2");
 		pArticleGroup2 = pArticleGroupRepository.save(pArticleGroup2);
-		final PArticle pArticle3 = new PArticle();
-		pArticle3.setHeading("pArticle1 in group2");
-		pArticle3.setArticleGroup(pArticleGroup2);
-		final PArticle pArticle4 = new PArticle();
-		pArticle4.setHeading("pArticle2 in group2");
-		pArticle4.setArticleGroup(pArticleGroup2);
-		pArticleRepository.save(pArticle3);
-		pArticleRepository.save(pArticle4);
+		articleAccessService.createArticle(pArticleGroup2, "Arthur Author2", "article" + 1 + " in group2",
+				"https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Skull_and_crossbones.svg/250px-Skull_and_crossbones.svg.png");
+
+		PArticle pArticle = pArticleRepository.findByHeading("article" + 1 + " in group2");
+		if (pArticle != null) {
+			pArticle.setPublished(true);
+			pArticleRepository.save(pArticle);
+		}
+		
+		articleAccessService.createArticle(pArticleGroup2, "Arthur Author2", "article" + 2 + " in group2",
+				"https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Skull_and_crossbones.svg/250px-Skull_and_crossbones.svg.png");
+		pArticle = pArticleRepository.findByHeading("article" + 2 + " in group2");
+		if (pArticle != null) {
+			pArticle.setPublished(true);
+			pArticleRepository.save(pArticle);
+		}
 	}
 }
