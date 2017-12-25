@@ -1,5 +1,7 @@
 package com.example.persistence.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -38,8 +41,15 @@ public class PArticle extends PAbstractEntity {
     @Column(name = "IMAGE", unique = false, nullable = true, length = 512)
 	private String image;
 
+	@Column(name = "DATE_PUBLISHED", nullable = true)
+	private Date datePublished = null;
+
+	@Column(name = "PUBLISHED", nullable = false)
+	@NotNull
+	private boolean published = false;
+
 	@Override
 	public String toString() {
-		return String.format("PArticleGroup[id=%s, heading='%s']", id, heading);
+		return String.format("PArticle[id=%s, heading='%s']", id, heading);
 	}
 }

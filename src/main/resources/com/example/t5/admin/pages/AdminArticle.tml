@@ -10,7 +10,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<t:form t:id="articleform">
-					<t:beaneditor t:id="article" object="pArticle" include="heading, intro, image">
+					<t:beaneditor t:id="article" object="pArticle" include="heading, intro, image, published, datePublished">
 					
 					</t:beaneditor>
 
