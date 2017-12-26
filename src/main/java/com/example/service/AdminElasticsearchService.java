@@ -77,6 +77,7 @@ public class AdminElasticsearchService implements IAdminElasticsearchService {
 		article.setHeading(pArticle.getHeading());
 		article.setIntro(pArticle.getIntro());
 		article.setImage(pArticle.getImage());
+		article.setVideoId(pArticle.getVideoId());
 		if (pArticle.getDatePublished() != null) {
 			article.setDatePublished(pArticle.getDatePublished().toDate());
 		}

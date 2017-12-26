@@ -53,6 +53,9 @@ public class PArticle extends PAbstractEntity {
 	@NotNull
 	private boolean published = false;
 
+    @Column(name = "VIDEO_ID", unique = false, nullable = true, length = 512)
+	private String videoId;
+
 	public DateTime getDatePublished() {
 		return (null == datePublished) ? null : new DateTime(datePublished.getTime());
 	}

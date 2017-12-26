@@ -111,6 +111,19 @@ public class Startup {
 					pArticleRepository.save(pArticle);
 				}
 			}
+			if (i % 2 == 0) {
+				final PArticle pArticle = pArticleRepository.findByHeading("article" + i + " in group1");
+				if (pArticle != null) {
+					pArticle.setVideoId("248740450");
+					pArticleRepository.save(pArticle);
+				}
+			} else {
+				final PArticle pArticle = pArticleRepository.findByHeading("article" + i + " in group1");
+				if (pArticle != null) {
+					pArticle.setVideoId("248740982");
+					pArticleRepository.save(pArticle);
+				}
+			}
 		}
 
 		PArticleGroup pArticleGroup2 = new PArticleGroup();

@@ -11,7 +11,7 @@
 			<div class="col-xs-12">
 				<t:form t:id="articleform">
 					<t:beaneditor t:id="article" object="pArticle"
-						include="heading, intro, image, published" add="datePublished, hourPublished, minutePublished">
+						include="heading, intro, image, videoId, published" add="datePublished, hourPublished, minutePublished">
 						<p:datePublished>
 							<t:dateField value="datePublished" />
 						</p:datePublished>

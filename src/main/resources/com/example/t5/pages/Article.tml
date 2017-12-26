@@ -1,9 +1,36 @@
-<html t:type="layout" title="" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+<html t:type="layout" title=""
+	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
 	<div class="row">
 		<div class="col-xs-12 text-center">
-			<hr />
 			${article.heading}
 		</div>
+		<div class="col-xs-12 text-center">
+			<t:if test="${article.videoId}">
+				<style>
+					.video-responsive{
+					overflow:hidden;
+					padding-bottom:56.25%;
+					position:relative;
+					height:0;
+					margin-bottom: 20px;
+					}
+					.video-responsive iframe{
+					left:0;
+					top:0;
+					height:100%;
+					width:100%;
+					position:absolute;
+					}
+				</style>
+				<div class="video-responsive">
+					<iframe src="https://player.vimeo.com/video/${article.videoId}"
+						width="640" height="360" frameborder="0" webkitallowfullscreen=""
+						mozallowfullscreen="" allowfullscreen=""></iframe>
+				</div>
+			</t:if>
+		</div>
+	</div>
+	<div class="row">
 		<div class="col-xs-12 text-center">
 			<img src="${article.image}" />
 		</div>

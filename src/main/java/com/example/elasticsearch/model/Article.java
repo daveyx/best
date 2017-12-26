@@ -20,6 +20,7 @@ public class Article extends AbstractEntity {
 	private String heading;
 	private String intro;
 	private String image;
+	private String videoId;
 	private Date datePublished;
 
 	@Override
