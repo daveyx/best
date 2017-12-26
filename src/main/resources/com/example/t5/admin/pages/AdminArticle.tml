@@ -10,8 +10,17 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<t:form t:id="articleform">
-					<t:beaneditor t:id="article" object="pArticle" include="heading, intro, image, published, datePublished">
-					
+					<t:beaneditor t:id="article" object="pArticle"
+						include="heading, intro, image, published" add="datePublished, hourPublished, minutePublished">
+						<p:datePublished>
+							<t:dateField value="datePublished" />
+						</p:datePublished>
+						<p:hourPublished>
+							<div t:id="hourPublished"/>
+						</p:hourPublished>
+						<p:minutePublished>
+							<div t:id="minutePublished"/>
+						</p:minutePublished>
 					</t:beaneditor>
 
 					<div class="t-beaneditor-row">

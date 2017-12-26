@@ -13,6 +13,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.joda.time.DateTime;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -50,6 +52,14 @@ public class PArticle extends PAbstractEntity {
 	@Column(name = "PUBLISHED", nullable = false)
 	@NotNull
 	private boolean published = false;
+
+	public DateTime getDatePublished() {
+		return (null == datePublished) ? null : new DateTime(datePublished.getTime());
+	}
+
+	public void setDatePublished(final DateTime datePublished) {
+		this.datePublished = (null == datePublished) ? null : new Date(datePublished.getMillis());
+	}
 
 	@Override
 	public String toString() {

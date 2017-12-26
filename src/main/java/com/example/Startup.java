@@ -107,7 +107,7 @@ public class Startup {
 				final PArticle pArticle = pArticleRepository.findByHeading("article" + i + " in group1");
 				if (pArticle != null) {
 					pArticle.setPublished(true);
-					pArticle.setDatePublished(new DateTime().toDate());
+					pArticle.setDatePublished(new DateTime());
 					pArticleRepository.save(pArticle);
 				}
 			}
