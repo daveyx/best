@@ -10,11 +10,16 @@
 					</p>
 				</div>
 				<div class="col-xs-12">
-					<img src="${article.image}" class="asdf"></img>
+					<t:pagelink page="Article" context="article.uuid">
+						<img src="${article.image}" />
+					</t:pagelink>
 				</div>
 				<div class="col-xs-12">
 					<p>
 						<span>${article.author}</span>
+					</p>
+					<p>
+						<span>${article.uuid}</span>
 					</p>
 				</div>
 			</div>

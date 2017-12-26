@@ -1,0 +1,19 @@
+<html t:type="layout" title="" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+	<div class="row">
+		<div class="col-xs-12 text-center">
+			<hr />
+			${article.heading}
+		</div>
+		<div class="col-xs-12 text-center">
+			<img src="${article.image}" />
+		</div>
+		<div class="col-xs-12 text-center">
+			<hr />
+			${article.author}
+		</div>
+		<div class="col-xs-12 text-center">
+			<hr />
+			${article.intro}
+		</div>
+	</div>
+</html>

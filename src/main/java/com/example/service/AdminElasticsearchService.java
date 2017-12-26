@@ -71,12 +71,15 @@ public class AdminElasticsearchService implements IAdminElasticsearchService {
 
 	private Article convert(final PArticle pArticle) {
 		final Article article = new Article();
+		article.setUuid(pArticle.getUuid());
 		article.setAuthor(pArticle.getAuthor());
 		article.setArticleGroup(pArticle.getArticleGroup().getName());
 		article.setHeading(pArticle.getHeading());
 		article.setIntro(pArticle.getIntro());
 		article.setImage(pArticle.getImage());
-		article.setDatePublished(pArticle.getDatePublished().toDate());
+		if (pArticle.getDatePublished() != null) {
+			article.setDatePublished(pArticle.getDatePublished().toDate());
+		}
 
 		return article;
 	}

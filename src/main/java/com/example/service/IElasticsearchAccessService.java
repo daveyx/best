@@ -6,4 +6,6 @@ public interface IElasticsearchAccessService {
 
 	Iterable<Article> getAllArticles();
 
+	Article getByUuid(final String articleUuid);
+
 }

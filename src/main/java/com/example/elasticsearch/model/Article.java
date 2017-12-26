@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 @Document(indexName = "data", type = "article")
 public class Article extends AbstractEntity {
 
+	private String uuid;
 	private String articleGroup;
 	private String author;
 	private String heading;
