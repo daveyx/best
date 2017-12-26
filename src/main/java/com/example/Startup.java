@@ -3,6 +3,7 @@ package com.example;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.authc.credential.PasswordService;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
@@ -106,6 +107,7 @@ public class Startup {
 				final PArticle pArticle = pArticleRepository.findByHeading("article" + i + " in group1");
 				if (pArticle != null) {
 					pArticle.setPublished(true);
+					pArticle.setDatePublished(new DateTime().toDate());
 					pArticleRepository.save(pArticle);
 				}
 			}
