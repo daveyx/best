@@ -2,9 +2,13 @@
 	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
 	<div class="row">
 		<div class="col-xs-12 text-center">
-			${article.heading}
+			<h1>${article.heading}</h1>
 		</div>
-		<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-lg-offset-2 col-lg-8 text-center">
+	</div>
+	<hr />
+	<div class="row">
+		<div
+			class="col-xs-12 col-sm-10 col-sm-offset-1 col-lg-offset-2 col-lg-8 text-center">
 			<t:if test="${article.videoId}">
 				<div class="video-responsive">
 					<iframe src="https://player.vimeo.com/video/${article.videoId}"
