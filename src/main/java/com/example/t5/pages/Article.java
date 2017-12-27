@@ -1,11 +1,13 @@
 package com.example.t5.pages;
 
+import org.apache.tapestry5.annotations.Import;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SetupRender;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
 import com.example.service.IElasticsearchAccessService;
 
+@Import(stylesheet="context:static/css/articleVideo.css")
 public class Article {
 
 	// -----------> services
