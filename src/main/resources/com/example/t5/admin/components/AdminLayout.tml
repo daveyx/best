@@ -12,6 +12,7 @@
 
 	<body>
 		<div id="page-content-wrapper">
+			<t:admin.header />
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-12">
