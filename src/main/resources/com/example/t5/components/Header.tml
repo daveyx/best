@@ -19,10 +19,10 @@
 						<t:pagelink page="Index2" class="">Home</t:pagelink>
 					</li>
 					<li>
-						<a href="#about">About</a>
+						<t:pagelink page="About" class="">About</t:pagelink>
 					</li>
 					<li>
-						<a href="#contact">Contact</a>
+						<t:pagelink page="Contact" class="">Contact</t:pagelink>
 					</li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
