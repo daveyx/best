@@ -1,9 +1,35 @@
-<html t:type="layout" title="" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+<html t:type="layout" title="" xmlns:p="tapestry:parameter"
+	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
 	<div class="row">
 		<div class="col-xs-12 text-center">
 			<h1>
 				User Profile
 			</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-lg-6 col-lg-offset-3">
+			<t:form t:id="editform">
+				<t:beaneditor t:id="pUserData" object="pUserData"
+					include="nickname,firstname,lastname" add="email"
+					reorder="email,nickname,firstname,lastname">
+					<p:email>
+						<div class="form-group">
+							<label for="email" class="control-label">E-Mail</label>
+							<input id="email" class="form-control" name="email"
+								value="${pUserAccount.email}" type="text" disabled="" />
+						</div>
+					</p:email>
+				</t:beaneditor>
+				<div class="t-beaneditor-row">
+					<t:submit value="Save" />
+				</div>
+			</t:form>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 text-center">
+
 		</div>
 	</div>
 </html>

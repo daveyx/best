@@ -6,6 +6,6 @@ import com.example.persistence.model.PUserAccount;
 
 public interface PUserAccountRepository extends CrudRepository<PUserAccount, Long> {
 
-	public PUserAccount findByEmail(String email);
-
+	public PUserAccount findByEmail(final String email);
+	public PUserAccount findByUuid(final String uuid);
 }

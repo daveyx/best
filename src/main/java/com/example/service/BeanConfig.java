@@ -59,4 +59,9 @@ public class BeanConfig {
 	public IElasticsearchAccessService elasticsearchAccessService() {
 		return new ElasticsearchAccessService();
 	}
+
+	@Bean
+	public IEditUserAccountService editUserAccountService() {
+		return new EditUserAccountService();
+	}
 }
