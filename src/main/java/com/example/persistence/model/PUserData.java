@@ -24,11 +24,17 @@ public class PUserData extends PAbstractEntity {
     @SequenceGenerator(name = "user_data_seq_gen", sequenceName = "USER_DATA_SEQ")
 	private Long id;
 
+    @Column(name = "NICKNAME", unique = true, nullable = true, length = 50)
+	private String nickName;
+
     @Column(name = "FIRSTNAME", unique = false, nullable = true, length = 50)
 	private String firstName;
 
     @Column(name = "LASTNAME", unique = false, nullable = true, length = 50)
 	private String lastName;
+
+    @Column(name = "USERIMAGE", unique = false, nullable = true, length = 512)
+	private String userImage;
 
 	@OneToOne(mappedBy = "userData")
 	private PUserAccount userAccount;
