@@ -10,18 +10,14 @@ public class Header {
 	@Inject
 	private JavaScriptSupport javaScriptSupport;
 
-	
 	// -----------> components
 
 	// -----------> properties
 
-
 	// -----------> events
 
-    
-    void afterRender()
-    {
-    	javaScriptSupport.require("bootstrap/collapse");
-    	javaScriptSupport.require("bootstrap/dropdown");
-    }
+	void afterRender() {
+		javaScriptSupport.require("bootstrap/collapse");
+		javaScriptSupport.require("bootstrap/dropdown");
+	}
 }
