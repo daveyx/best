@@ -16,8 +16,10 @@
 					<p:email>
 						<div class="form-group">
 							<label for="email" class="control-label">E-Mail</label>
-							<input id="email" class="form-control" name="email"
-								value="${pUserAccount.email}" type="text" disabled="" />
+							<div id="email-wrapper">
+								<input id="email" class="form-control" name="email"
+									value="${pUserAccount.email}" type="text" disabled="" />
+							</div>
 						</div>
 					</p:email>
 				</t:beaneditor>

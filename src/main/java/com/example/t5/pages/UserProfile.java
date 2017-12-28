@@ -7,7 +7,9 @@ import org.apache.tapestry5.annotations.InjectComponent;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SetupRender;
 import org.apache.tapestry5.corelib.components.Form;
+import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
+import org.apache.tapestry5.services.javascript.JavaScriptSupport;
 import org.tynamo.security.services.SecurityService;
 
 import com.example.persistence.model.PUserAccount;
@@ -29,6 +31,12 @@ public class UserProfile {
 	@Inject
 	private AlertManager alertManager;
 
+	@Inject
+	private JavaScriptSupport javaScriptSupport;
+
+	@Inject
+	private Messages messages;
+
 	// -----------> components
 
 	@InjectComponent("editform")
@@ -49,6 +57,15 @@ public class UserProfile {
 		initAccount();
 	}
 
+	void afterRender() {
+		javaScriptSupport.require("bootstrap/tooltip");
+		javaScriptSupport.require("userProfile").invoke("initTooltips").with(
+				messages.get("com.example.userprofile.tooltip.email"),
+				messages.get("com.example.userprofile.tooltip.nickname"),
+				messages.get("com.example.userprofile.tooltip.firstname"),
+				messages.get("com.example.userprofile.tooltip.lastname"));
+	}
+
 	void onPrepareForSubmit() {
 		initAccount();
 	}
@@ -57,15 +74,16 @@ public class UserProfile {
 		editUserAccountService.update(pUserAccount, pUserData);
 		alertManager.success("Useraccount updated");
 	}
-	
+
 	//
 	// ---> private
 	//
-	
+
 	void initAccount() {
 		final Subject subject = securityService.getSubject();
 		final String uuidFromSecurityContext = (String) subject.getPrincipal();
-		final Tuple2<PUserAccount, PUserData> accountData =  editUserAccountService.getAccountByUuid(uuidFromSecurityContext);
+		final Tuple2<PUserAccount, PUserData> accountData = editUserAccountService
+				.getAccountByUuid(uuidFromSecurityContext);
 		pUserAccount = accountData.getA();
 		pUserData = accountData.getB();
 	}
