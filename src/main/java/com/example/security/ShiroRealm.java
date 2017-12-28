@@ -48,7 +48,7 @@ public class ShiroRealm extends AuthorizingRealm {
 			throw new AccountException("Null usernamesare not allowed by this realm.");
 		}
 
-		final PUserAccount user = userAccountRepository.findByEmail(username);
+		final PUserAccount pUserAccount = userAccountRepository.findByEmail(username);
 		// if (user.isFederatedAccount()) { throw new AccountException("Account [" +
 		// username + "] is federated and cannot be locally authenticated."); }
 
@@ -59,7 +59,12 @@ public class ShiroRealm extends AuthorizingRealm {
 		// String msg = "The credentials for account [" + username + "] are expired";
 		// throw new ExpiredCredentialsException(msg);
 		// }
-		return new SimpleAuthenticationInfo(username, user.getPassword(), getName());
+
+		if (pUserAccount == null) {
+			return null;
+		}
+
+		return new SimpleAuthenticationInfo(pUserAccount.getUuid(), pUserAccount.getPassword(), getName());
 	}
 
 }
