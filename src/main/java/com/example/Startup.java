@@ -49,11 +49,11 @@ public class Startup {
 	public void doSomethingAfterStartup() {
 		initTestData();
 		initTestArticleData();
-		createAccount();
+		createAccounts();
 		LOGGER.info("-------------> startup finished");
 	}
 
-	public void createAccount() {
+	public void createAccounts() {
 		final PUserAccount existingAccount = pUserAccountRepository.findByEmail("user@email.com");
 		if (existingAccount != null) {
 			return;
@@ -69,7 +69,25 @@ public class Startup {
 		if (pUserAccountSaved == null) {
 			throw new IllegalStateException("error creating default account");
 		}
-		LOGGER.info("save useraccount done");
+
+		final PUserAccount existingAdminAccount = pUserAccountRepository.findByEmail("admin@email.com");
+		if (existingAdminAccount != null) {
+			return;
+		}
+		final PUserData pUserData2 = new PUserData();
+		pUserData2.setFirstName("fName");
+		pUserData2.setLastName("lName");
+		final PUserAccount pUserAccount2 = new PUserAccount();
+		pUserAccount2.setEmail("admin@email.com");
+		pUserAccount2.setUserData(pUserData2);
+		pUserAccount2.setPassword(passwordService.encryptPassword("asdf"));
+		pUserAccount2.setRoles("admin");
+		final PUserAccount pUserAccountSaved2 = pUserAccountRepository.save(pUserAccount2);
+		if (pUserAccountSaved2 == null) {
+			throw new IllegalStateException("error creating default account");
+		}
+		
+		LOGGER.info("save useraccounts done");
 	}
 
 	//

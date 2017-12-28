@@ -2,9 +2,11 @@ package com.example.t5.admin.components;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.apache.tapestry5.annotations.Import;
 
 @RequiresAuthentication
+@RequiresRoles("admin")
 @Import(stylesheet="context:static/css/layout.css")
 public class AdminLayout {
 

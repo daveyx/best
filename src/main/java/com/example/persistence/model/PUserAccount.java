@@ -35,6 +35,9 @@ public class PUserAccount extends PAbstractEntity {
 	@Column(name = "PASSWORD", unique = false, nullable = true)
 	private String password;
 
+	@Column(name = "ROLES", unique = false, nullable = true)
+	private String roles;
+
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "USER_DATA_ID")
 	private PUserData userData;

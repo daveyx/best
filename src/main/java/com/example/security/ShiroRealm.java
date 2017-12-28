@@ -1,5 +1,9 @@
 package com.example.security;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authc.AccountException;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -7,7 +11,9 @@ import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authc.credential.CredentialsMatcher;
+import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.tapestry5.ioc.annotations.Inject;
@@ -28,12 +34,6 @@ public class ShiroRealm extends AuthorizingRealm {
 		setName(ShiroRealm.class.getCanonicalName());
 		setAuthenticationTokenClass(UsernamePasswordToken.class);
 		setCredentialsMatcher(credentialsMatcher);
-	}
-
-	@Override
-	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
@@ -65,6 +65,42 @@ public class ShiroRealm extends AuthorizingRealm {
 		}
 
 		return new SimpleAuthenticationInfo(pUserAccount.getUuid(), pUserAccount.getPassword(), getName());
+	}
+
+	@Override
+	protected AuthorizationInfo doGetAuthorizationInfo(final PrincipalCollection principals) {
+		if (principals == null) {
+			throw new AuthorizationException("PrincipalCollection was null, which should not happen");
+		}
+
+		if (principals.isEmpty()) {
+			return null;
+		}
+
+		if (principals.fromRealm(getName()).size() <= 0) {
+			return null;
+		}
+
+		String uuid = (String) principals.fromRealm(getName()).iterator().next();
+		if (uuid == null) {
+			return null;
+		}
+		final PUserAccount pUserAccount = userAccountRepository.findByUuid(uuid);
+
+		if (pUserAccount == null) {
+			return null;
+		}
+
+		final Set<String> roles = new HashSet<String>();
+		if (StringUtils.isBlank(pUserAccount.getRoles())) {
+			return new SimpleAuthorizationInfo(roles);
+		}
+		final String[] accountRoles = StringUtils.split(pUserAccount.getRoles(), ',');
+		for (final String role : accountRoles) {
+			roles.add(role);
+		}
+
+		return new SimpleAuthorizationInfo(roles);
 	}
 
 }
