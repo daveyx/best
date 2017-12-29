@@ -4,7 +4,8 @@ import com.example.service.email.TrashMailException;
 
 public interface IAccountService {
 
-	void register(final String email, final String plainTextPassword, final boolean newsletterAccepted) throws TrashMailException;
+	void register(final String email, final String plainTextPassword, final boolean newsletterAccepted,
+			final boolean sendAckMail) throws TrashMailException;
 
 	boolean isEmailExisting(final String email);
 

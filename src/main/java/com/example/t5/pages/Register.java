@@ -82,7 +82,7 @@ public class Register {
 
 	Object onSuccessFromRegistrationForm() {
 		try {
-			accountService.register(registerEmail, registerPassword, registerNewsLetter);
+			accountService.register(registerEmail, registerPassword, registerNewsLetter, true);
 		} catch (final TrashMailException e) {
 			e.printStackTrace();
 			registrationForm.recordError(registerEmailField, messages.get("com.example.registration.emailnotalowed1"));

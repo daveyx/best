@@ -12,9 +12,11 @@ import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 
 import com.example.persistence.model.PUserAccount;
 import com.example.persistence.repo.PUserAccountRepository;
+import com.example.service.email.IMailContentCreationService;
 import com.example.service.email.TrashMail;
 import com.example.service.email.TrashMailException;
 import com.example.util.MapEncoderDecoder;
@@ -29,6 +31,9 @@ public class AccountService implements IAccountService {
 	@Autowired
 	private PasswordService passwordService;
 
+	@Autowired
+	private IMailContentCreationService mailContentCreationService;
+
 	private final MapEncoderDecoder mapEncoderDecoder;
 
 	public AccountService() {
@@ -37,7 +42,7 @@ public class AccountService implements IAccountService {
 	}
 
 	@Override
-	public void register(final String email, final String plainTextPassword, final boolean newsletterAccepted)
+	public void register(final String email, final String plainTextPassword, final boolean newsletterAccepted, final boolean sendAckMail)
 			throws TrashMailException {
 		for (final String trashMail : TrashMail.TRASHMAILS) {
 			if (email.contains(trashMail)) {
@@ -52,8 +57,12 @@ public class AccountService implements IAccountService {
 		// }
 
 		pAccount.setPassword(passwordService.encryptPassword(plainTextPassword));
-		pUserAccountRepository.save(pAccount);
-
+		final PUserAccount pUserAccountSaved = pUserAccountRepository.save(pAccount);
+		
+		if (sendAckMail) {
+			createRegistrationConfirmationMail(pUserAccountSaved.getEmail(), pUserAccountSaved.getUuid());
+		}
+		
 		LOGGER.info(
 				"User registered with email=" + pAccount.getEmail() + " and hashedPassword=" + pAccount.getPassword());
 	}
@@ -83,6 +92,11 @@ public class AccountService implements IAccountService {
 	//
 	// ---> private
 	//
+
+	@Async
+	private void createRegistrationConfirmationMail(final String email, final String uuid) {
+		mailContentCreationService.createRegistrationConfirmationMail(email, encode(uuid));
+	}
 
 	private String encode(final String uuid) {
 		final Map<String, String> map = new HashMap<String, String>();

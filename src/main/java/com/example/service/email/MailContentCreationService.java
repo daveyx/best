@@ -13,16 +13,23 @@ public class MailContentCreationService implements IMailContentCreationService {
 
 	@Autowired
 	private VelocityEngine velocityEngine;
+
 	
-	public String createTestMail()
-	{
+
+	@Override
+	public String createTestMail() {
 		final Template vcTemplate = velocityEngine.getTemplate("velocity/testMail.vm");
-		
+
 		final VelocityContext vcContext = new VelocityContext();
 		vcContext.put("pParm", "a parameter from the backend");
-	
+
 		final StringWriter out = new StringWriter();
 		vcTemplate.merge(vcContext, out);
 		return out.toString();
+	}
+
+	@Override
+	public void createRegistrationConfirmationMail(final String email, final String ackToken) {
+		
 	}
 }

@@ -66,7 +66,7 @@ public class AccountTests {
 	@Test
 	public void accountService() {
 		try {
-			accountService.register(TEST_EMAIL, "aPassword", true);
+			accountService.register(TEST_EMAIL, "aPassword", true, false);
 		} catch (final TrashMailException tme) {
 			tme.printStackTrace();
 		}

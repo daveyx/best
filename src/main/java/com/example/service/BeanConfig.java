@@ -9,12 +9,14 @@ import org.apache.shiro.util.SimpleByteSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 import com.example.service.account.AccountService;
 import com.example.service.account.IAccountService;
 
 @Configuration
 @ComponentScan("com.example.service")
+@EnableAsync
 public class BeanConfig {
 
 	private static final String PRIVATE_SALT = "aPrivateSalt";
