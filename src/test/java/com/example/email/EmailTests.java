@@ -8,18 +8,23 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.core.env.Environment;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.example.DemoApplication;
 import com.example.service.email.EmailConfiguration;
 import com.example.service.email.IMailContentCreationService;
 import com.example.service.email.IMailSendService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
+@DataJpaTest
 @TestPropertySource("classpath:email.properties")
-@ContextConfiguration(classes = EmailConfiguration.class)
+@ContextConfiguration(classes = { EmailConfiguration.class, DemoApplication.class })
+@EnableAutoConfiguration
 public class EmailTests {
 
 	@Autowired
@@ -53,5 +58,10 @@ public class EmailTests {
 		final String recipient = environment.getProperty("email.user");
 		mailSendService.sendHtmlMail(subject, bodyAsString, recipient);
 		System.out.println("mail sent, look into your inbox...");
+	}
+	
+	@Test
+	public void asdf() {
+		mailContentCreationService.createRegistrationConfirmationMail(1l, "asdf", "basdf");
 	}
 }

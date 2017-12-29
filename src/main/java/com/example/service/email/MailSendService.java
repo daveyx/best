@@ -99,7 +99,4 @@ public class MailSendService implements IMailSendService {
 		LOGGER.info("sent mail subject [" + subject + "] recipient [" + recipient + "]");
 	}
 
-	//
-	// ---> private
-	//
 }

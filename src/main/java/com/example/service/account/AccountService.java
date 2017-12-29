@@ -60,7 +60,7 @@ public class AccountService implements IAccountService {
 		final PUserAccount pUserAccountSaved = pUserAccountRepository.save(pAccount);
 		
 		if (sendAckMail) {
-			createRegistrationConfirmationMail(pUserAccountSaved.getEmail(), pUserAccountSaved.getUuid());
+			createRegistrationConfirmationMail(pUserAccountSaved.getId(), pUserAccountSaved.getEmail(), pUserAccountSaved.getUuid());
 		}
 		
 		LOGGER.info(
@@ -94,8 +94,8 @@ public class AccountService implements IAccountService {
 	//
 
 	@Async
-	private void createRegistrationConfirmationMail(final String email, final String uuid) {
-		mailContentCreationService.createRegistrationConfirmationMail(email, encode(uuid));
+	private void createRegistrationConfirmationMail(final Long accountId, final String email, final String uuid) {
+		mailContentCreationService.createRegistrationConfirmationMail(accountId, email, encode(uuid));
 	}
 
 	private String encode(final String uuid) {
