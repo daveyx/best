@@ -10,8 +10,8 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.Request;
 import org.apache.tapestry5.services.ajax.AjaxResponseRenderer;
 
+import com.example.elasticsearch.IAdminElasticsearchService;
 import com.example.elasticsearch.model.Article;
-import com.example.service.IAdminElasticsearchService;
 import com.example.t5.admin.components.AdminLayout;
 import com.example.util.Tuple2;
 

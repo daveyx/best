@@ -51,16 +51,6 @@ public class BeanConfig {
 	}
 
 	@Bean
-	public IAdminElasticsearchService adminElasticsearchService() {
-		return new AdminElasticsearchService();
-	}
-
-	@Bean
-	public IElasticsearchAccessService elasticsearchAccessService() {
-		return new ElasticsearchAccessService();
-	}
-
-	@Bean
 	public IEditUserAccountService editUserAccountService() {
 		return new EditUserAccountService();
 	}

@@ -22,7 +22,7 @@ import com.example.service.email.TrashMailException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @DataJpaTest
-@ContextConfiguration(classes = {BeanConfig.class, DemoApplication.class})
+@ContextConfiguration(classes = { BeanConfig.class, DemoApplication.class })
 @EnableAutoConfiguration
 public class AccountTests {
 
@@ -55,7 +55,7 @@ public class AccountTests {
 		createAccount();
 		final PUserAccount pUserAccount = pUserAccountRepository.findByEmail(TEST_EMAIL);
 		assertNotNull(pUserAccount);
-		
+
 		final PUserData pUserData = pUserAccount.getUserData();
 		assertNotNull(pUserData);
 		assertEquals("fName", pUserData.getFirstName());
@@ -72,5 +72,13 @@ public class AccountTests {
 		}
 		final PUserAccount pUserAccount = pUserAccountRepository.findByEmail(TEST_EMAIL);
 		assertNotNull(pUserAccount);
+	}
+
+	@Test
+	public void ackLink() {
+		final String uuid = "1234-asdf-5678-bsdf";
+		final String encoded = accountService.getAccountAcknowledgeLink(null, uuid);
+		final String decoded = accountService.getUuidFromAccountAcknowledgeLink(encoded);
+		assertEquals(uuid, decoded);
 	}
 }

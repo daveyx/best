@@ -7,4 +7,8 @@ public interface IAccountService {
 	void register(final String email, final String plainTextPassword, final boolean newsletterAccepted) throws TrashMailException;
 
 	boolean isEmailExisting(final String email);
+
+	String getAccountAcknowledgeLink(final String url, final String uuid);
+
+	String getUuidFromAccountAcknowledgeLink(final String encoded);
 }

@@ -4,8 +4,8 @@ import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SetupRender;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
+import com.example.elasticsearch.IElasticsearchAccessService;
 import com.example.elasticsearch.model.Article;
-import com.example.service.IElasticsearchAccessService;
 
 public class Index2 {
 

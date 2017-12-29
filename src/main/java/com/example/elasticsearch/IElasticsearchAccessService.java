@@ -1,4 +1,4 @@
-package com.example.service;
+package com.example.elasticsearch;
 
 import com.example.elasticsearch.model.Article;
 
