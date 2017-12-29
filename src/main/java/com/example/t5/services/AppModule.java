@@ -11,12 +11,16 @@ import org.apache.tapestry5.ioc.annotations.Contribute;
 import org.apache.tapestry5.ioc.annotations.Value;
 import org.apache.tapestry5.ioc.services.ApplicationDefaults;
 import org.apache.tapestry5.ioc.services.SymbolProvider;
+import org.apache.tapestry5.services.ComponentOverride;
 import org.apache.tapestry5.services.LibraryMapping;
 import org.apache.tapestry5.services.messages.ComponentMessagesSource;
+import org.tynamo.security.SecuritySymbols;
 import org.tynamo.security.services.SecurityFilterChainFactory;
 import org.tynamo.security.services.impl.SecurityFilterChain;
 
 import com.example.security.ShiroRealm;
+import com.example.t5.pages.Index2;
+import com.example.t5.pages.Login;
 import com.example.t5.services.impl.T5Service;
 import com.example.t5.services.impl.T5TestDataService;
 
@@ -74,6 +78,9 @@ public class AppModule {
 		// option in 5.5.
 		configuration.add(SymbolConstants.JAVASCRIPT_INFRASTRUCTURE_PROVIDER, "jquery");
 		configuration.add(SymbolConstants.BOOTSTRAP_ROOT, "context:mybootstrap");
+//		configuration.add(SymbolConstants.START_PAGE_NAME, "index2");
+		configuration.add(SecuritySymbols.SUCCESS_URL,"/" + Index2.class.getSimpleName().toLowerCase());
+		configuration.add(SecuritySymbols.LOGIN_URL,"/" + Login.class.getSimpleName().toLowerCase());
 	}
 
 	public static void contributeWebSecurityManager(final Configuration<Realm> configuration, final ShiroRealm sr) {
@@ -113,5 +120,14 @@ public class AppModule {
 
 	public static void contributeComponentClassResolver(final Configuration<LibraryMapping> configuration) {
 		configuration.add(new LibraryMapping("admin", "com.example.t5.admin"));
+	}
+
+	@Contribute(ComponentOverride.class)
+	public static void overrideComponent(final MappedConfiguration<Class<?>, Class<?>> configuration) {
+
+		// components
+		
+		// pages
+		configuration.add(org.tynamo.security.pages.Login.class, Login.class);
 	}
 }
