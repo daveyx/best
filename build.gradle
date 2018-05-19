@@ -1,10 +1,10 @@
 buildscript {
 	ext {
-        springBootVersion = '2.0.0.M7'
+        springBootVersion = '2.0.2.RELEASE'
 	}
 	repositories {
 		mavenCentral()
-		maven { url 'https://repo.spring.io/libs-snapshot' }
+		//maven { url 'https://repo.spring.io/libs-snapshot' }
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
@@ -29,8 +29,7 @@ repositories {
 
 ext {
     versions =  [
-            spring:     '5.0.2.RELEASE',
-            boot:       '2.0.0.M7',
+            boot:       '2.0.2.RELEASE',
             tapestry:   '5.4.3',
             junit:      '4.12'
     ]
@@ -38,14 +37,14 @@ ext {
 
 dependencies {
 
-	compile 'org.springframework.boot:spring-boot-starter-data-jpa:2.0.0.M7'
-    compile 'org.springframework.boot:spring-boot-starter-web:2.0.0.M7'
-    compile 'org.springframework.boot:spring-boot-starter-data-elasticsearch:2.0.0.M7'
+	compile 'org.springframework.boot:spring-boot-starter-data-jpa:2.0.2.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter-web:2.0.2.RELEASE'
+    compile 'org.springframework.data:spring-data-elasticsearch:3.0.7.RELEASE'
 
 	compile 'org.apache.commons:commons-email:1.5'
 	compile 'org.apache.velocity:velocity:1.7'
     
-    compile 'org.springframework:spring-web:5.0.2.RELEASE'
+    //compile 'org.springframework:spring-web:5.0.2.RELEASE'
 
     compile 'org.apache.tapestry:tapestry-core:5.4.3'
     compile 'org.tynamo:tapestry-security:0.7.0'
@@ -53,7 +52,7 @@ dependencies {
 	runtime 'mysql:mysql-connector-java:5.1.44'
 	compileOnly 'org.projectlombok:lombok'
 
-	testCompile 'org.springframework.boot:spring-boot-starter-test:2.0.0.M7'
+	testCompile 'org.springframework.boot:spring-boot-starter-test:2.0.2.RELEASE'
 	testCompile 'com.h2database:h2:1.4.196'
 	
 }
